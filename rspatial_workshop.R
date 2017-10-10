@@ -31,5 +31,6 @@ st_write(dc_metro_sttn,here("data/metrosttn.shp"))
 ## Geojson
 st_write(dc_metro,here("data/metrolines.geojson"))
 
-## fileGDB experiment
+## Read files exercise
+us_states <- st_read(here("data/tl_2015_us_state.shp"))
 
