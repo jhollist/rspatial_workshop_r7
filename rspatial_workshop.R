@@ -67,3 +67,7 @@ dc_metro_sttn_busy <- dc_metro_sttn %>%
   filter(avg_wkday > 10000) %>%
   select(name = NAME, line = LINE, ridership = avg_wkday)
 
+
+busy_sttn <- dc_metro_sttn %>%
+  filter(avg_wkday > 10000) %>%
+  select(name = NAME, line = LINE, ridership = avg_wkday)
