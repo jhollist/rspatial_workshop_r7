@@ -6,5 +6,11 @@ library(dplyr)
 library(sf)
 library(raster)
 library(here)
+library(httr)
 
+# Get Data
+url <- "https://github.com/usepa/rspatial_workshop/blob/master/data/data.zip?raw=true"
+GET(url,write_disk(here("data/data.zip"),overwrite = TRUE))
 
+# Unzip data
+unzip(here("data/data.zip"), exdir = here("data"), overwrite = TRUE)
