@@ -67,7 +67,10 @@ dc_metro_sttn_busy <- dc_metro_sttn %>%
   filter(avg_wkday > 10000) %>%
   select(name = NAME, line = LINE, ridership = avg_wkday)
 
+dc_metro_stn_summ <- dc_metro_sttn %>%
+  left_join(station_rides, by = c("NAME" = "Ent.Station")) %>%
+  group_by(LINE) %>%
+  summarize(total_avg_ridership = sum(avg_wkday, na.rm = TRUE)) %>%
+  arrange(desc(total_avg_ridership))
+dc_metro_stn_summ
 
-busy_sttn <- dc_metro_sttn %>%
-  filter(avg_wkday > 10000) %>%
-  select(name = NAME, line = LINE, ridership = avg_wkday)
