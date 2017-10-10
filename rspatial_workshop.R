@@ -74,3 +74,20 @@ dc_metro_stn_summ <- dc_metro_sttn %>%
   arrange(desc(total_avg_ridership))
 dc_metro_stn_summ
 
+# Projection
+
+# look at the proj info
+## sf
+st_crs(dc_metro)$proj4string
+## raster
+raster::projection(dc_nlcd)
+
+# Save p4 to object
+alb_p4 <- raster::projection(dc_nlcd)
+# Transform sf
+dc_metro_alb <- st_transform(dc_metro, alb_p4 )
+
+# Transform raster
+dc_elev_alb <- projectRaster(dc_elev,crs=alb_p4)
+
+
