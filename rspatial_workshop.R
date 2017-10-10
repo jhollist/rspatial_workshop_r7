@@ -34,3 +34,17 @@ st_write(dc_metro,here("data/metrolines.geojson"))
 ## Read files exercise
 us_states <- st_read(here("data/tl_2015_us_state.shp"))
 
+# Read in raster data
+
+## Geotiff
+dc_elev <- raster(here("data/dc_ned.tif"))
+dc_elev
+
+# Write out raster data
+#writeRaster(dc_elev,"dc_elev_example.asc", overwrite = T)
+
+# Read in raster exercise
+dc_nlcd <- raster(here("data/dc_nlcd.tif"))
+plot(dc_nlcd)
+
+
