@@ -23,3 +23,13 @@ dc_metro <- st_read(here("data/Metro_Lines.shp"))
 ## geojson
 dc_metro_sttn <- st_read(here("data/metrostations.geojson"))
 
+# Write spatial data
+
+## Shapefile
+st_write(dc_metro_sttn,here("data/metrosttn.shp"))
+
+## Geojson
+st_write(dc_metro,here("data/metrolines.geojson"))
+
+## fileGDB experiment
+
