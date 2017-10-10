@@ -47,4 +47,23 @@ dc_elev
 dc_nlcd <- raster(here("data/dc_nlcd.tif"))
 plot(dc_nlcd)
 
+# Explore spatial data
+summary(dc_metro_sttn)
+names(dc_metro)
+
+# manipulate with dplyr
+
+est_mkt_sttn <- dc_metro_sttn %>%
+  filter(NAME == "Eastern Market")
+
+org_line_only <- dc_metro %>%
+  filter(NAME == "orange")
+
+# Merging data
+
+station_rides <- read.csv(here("data/station_rides.csv"), stringsAsFactors = FALSE)
+dc_metro_sttn_busy <- dc_metro_sttn %>%
+  left_join(station_rides, by = c("NAME" = "Ent.Station")) %>%
+  filter(avg_wkday > 10000) %>%
+  select(name = NAME, line = LINE, ridership = avg_wkday)
 
