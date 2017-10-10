@@ -84,10 +84,11 @@ raster::projection(dc_nlcd)
 
 # Save p4 to object
 alb_p4 <- raster::projection(dc_nlcd)
+
 # Transform sf
 dc_metro_alb <- st_transform(dc_metro, alb_p4 )
 
 # Transform raster
-dc_elev_alb <- projectRaster(dc_elev,crs=alb_p4)
+dc_elev_alb <- raster::projectRaster(dc_elev,crs=alb_p4)
 
 
