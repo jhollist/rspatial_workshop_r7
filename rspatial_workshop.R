@@ -14,3 +14,12 @@ GET(url,write_disk(here("data/data.zip"),overwrite = TRUE))
 
 # Unzip data
 unzip(here("data/data.zip"), exdir = here("data"), overwrite = TRUE)
+
+# Read in data files
+
+## Shapefile
+dc_metro <- st_read(here("data/Metro_Lines.shp"))
+
+## geojson
+dc_metro_sttn <- st_read(here("data/metrostations.geojson"))
+
