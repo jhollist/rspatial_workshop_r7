@@ -87,8 +87,13 @@ alb_p4 <- raster::projection(dc_nlcd)
 
 # Transform sf
 dc_metro_alb <- st_transform(dc_metro, alb_p4 )
+dc_metro_sttn_alb <- st_transform(dc_metro_sttn, st_crs(dc_metro_alb))
 
 # Transform raster
 dc_elev_alb <- raster::projectRaster(dc_elev,crs=alb_p4)
 
+# filter and reproject excercise
+dc_bnd_alb <- us_states %>%
+  filter(NAME == "District of Columbia") %>%
+  st_transform(crs = alb_p4)
 
